@@ -3940,7 +3940,7 @@ $("#cat_select_items_button").hide();
 //$("#catFrom").css("margin-top","-250px");
 //$("#cat_from_space").css("margin-top","px");
 $("#selection_menu").hide();
-//$("#stylized").show();
+$("#stylized").show();
 $("#actionLabelDiv").show();
 $("#finalCatShow").show();
 
