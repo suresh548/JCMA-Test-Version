@@ -3016,7 +3016,7 @@ document.getElementById("selected_items").innerHTML=ieSpan;
 }
 
 $(document).ready(function() {
-
+alert("start app...");
 $("#hint").hide();
 var tooltipValue = '';
 var id='';
