@@ -3951,6 +3951,7 @@ $("#finalCatTo").show();
 $("#catTo").hide();
 $("#selCat").hide();
 $("#cat_sel").hide();
+$("#selectedCat").text(selected_cat);
 $("#cat_select_items_button").hide();
 
 $("#actionLabelDiv").show();
