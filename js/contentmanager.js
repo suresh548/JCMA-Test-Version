@@ -3947,6 +3947,8 @@ $("#src_place").hide();
 $("#finalCatFrom").hide();
 $("#cat_place").hide();
 $("#finalSelCat").show();
+$("#finalCatTo").show();
+$("#catTo").hide();
 $("#selCat").hide();
 $("#cat_sel").hide();
 $("#cat_select_items_button").hide();
