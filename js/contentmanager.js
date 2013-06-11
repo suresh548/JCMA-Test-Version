@@ -3943,10 +3943,11 @@ $("#selection_menu").hide();
 $("#stylized").show();
 $("#cmdu").show();
 $("#src_place").hide();
-$("#catFrom").hide();
+$("#finalCatFrom").hide();
 $("#cat_place").hide();
 $("#selCat").hide();
 $("#cat_sel").hide();
+$("#cat_select_items_button").hide();
 
 $("#actionLabelDiv").show();
 $("#finalCatShow").show();
