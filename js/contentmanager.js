@@ -3945,7 +3945,7 @@ $("#cmdu").show();
 $("#src_place").hide();
 $("#finalCatFrom").hide();
 $("#cat_place").hide();
-$("#selCat").hide();
+$("#finalSelCat").show();
 $("#cat_sel").hide();
 $("#cat_select_items_button").hide();
 
