@@ -3941,6 +3941,7 @@ $("#cat_select_items_button").hide();
 //$("#cat_from_space").css("margin-top","px");
 $("#selection_menu").hide();
 $("#stylized").show();
+$("#actionDiv").hide();
 $("#cmdu").show();
 $("#src_place").hide();
 $("#finalCatFrom").hide();
