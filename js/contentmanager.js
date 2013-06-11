@@ -3059,7 +3059,7 @@ $('div.tooltip').remove();
 
 function catFromPlace() {
     // Identifies which space/group/project user has chosen to edit categories into and calls the appropriate method.
-	alert("Into CatFrom Place");
+	//alert("Into CatFrom Place");
     var cat_place = document.getElementById("cat_place");
     var cat_sel_place = cat_place.options[cat_place.selectedIndex].value;
     if (cat_sel_place == "select_space") {
@@ -3940,7 +3940,6 @@ $("#cat_select_items_button").hide();
 */
 //$("#catFrom").css("margin-top","-250px");
 //$("#cat_from_space").css("margin-top","px");
-$("#actionLabelDiv").show();
 $("#selection_menu").hide();
 $("#finalCatShow").show();
 
