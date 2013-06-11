@@ -3911,6 +3911,7 @@ $("#catTo").show();
 }
 
 function startUpdatingCategories() {
+alert("start updating...");
 	//alert("catagory selectionn....");
 	//alert("browserName = "+browserName);
 
