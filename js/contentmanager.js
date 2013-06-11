@@ -3914,10 +3914,11 @@ function startUpdatingCategories() {
 	//alert("catagory selectionn....");
 	//alert("browserName = "+browserName);
 
-
+/*
 
 $("#selection_menu").hide();
 $("#stylized").show();
+
 $("#change_selection_div").hide();
 $("#change_contents").hide();
 $("#start_copying_button").hide();
@@ -3935,15 +3936,16 @@ $("#catTo").show();
 $("#catTo").show();
 $("#catFrom").text('Selected Place');
 $("#cat_select_items_button").hide();
+*/
 //$("#catFrom").css("margin-top","-250px");
 //$("#cat_from_space").css("margin-top","px");
 
 
+$("#finalCatShow").show();
 
 
-
-$("#selected_items_categories").show();
-$("#selected_items").show();
+//$("#selected_items_categories").show();
+//$("#selected_items").show();
 
 if(browserName=="MSIE")
 {
