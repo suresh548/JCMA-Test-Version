@@ -2483,13 +2483,15 @@ $("#blog_div").show();
 var all_selected=''; 
 
 function goBack(){
+alert("inside go back");
 // handles the code for creating the final selection tables and the list of values to be passed to the server/javascript
 if(sel_action_val=="categs")
 {
-	
+	alert("updating categories...");
 		startUpdatingCategories();
 }
 else {
+alert("not updating categories...");
 all_selected='';
 Grp_file_json='';
 Grp_doc_json='';
