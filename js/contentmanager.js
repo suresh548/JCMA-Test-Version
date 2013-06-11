@@ -3197,8 +3197,8 @@ function populateContent() {
 
                         for (var ind = 0; ind < categg1.length; ind++) {
                             if (categg1[ind] == selected_cat) {
-                                console.log("categg1= " + categg1);
-                                console.log("selected_cat= " + selected_cat);
+                                //console.log("categg1= " + categg1);
+                               // console.log("selected_cat= " + selected_cat);
                                 //console.log(document.getElementById("file_cb"+index).value);
                                 var temp_id = "file_cb" + index;
                                 console.log("temp_id= " + temp_id);
@@ -3332,8 +3332,8 @@ function populateBlogContent(space_url, blog_url) {
 
                         for (var ind = 0; ind < categg2.length; ind++) {
                             if (categg2[ind] == selected_cat) {
-                                console.log("categg2= " + categg2);
-                                console.log("selected_cat= " + selected_cat);
+                                //console.log("categg2= " + categg2);
+                                //console.log("selected_cat= " + selected_cat);
                                 //console.log(document.getElementById("blog_cb"+index).value);
                                 var temp_id = "blog_cb" + index;
                                 console.log("temp_id= " + temp_id);
@@ -3455,8 +3455,8 @@ function populateDocContent(space_url) {
 
                         for (var ind = 0; ind < categg3.length; ind++) {
                             if (categg3[ind] == selected_cat) {
-                                console.log("categg3= " + categg3);
-                                console.log("selected_cat= " + selected_cat);
+                                //console.log("categg3= " + categg3);
+                                //console.log("selected_cat= " + selected_cat);
                                 //console.log(document.getElementById("doc_cb"+index).value);
                                 var temp_id = "doc_cb" + index;
                                 console.log("temp_id= " + temp_id);
@@ -3578,8 +3578,8 @@ function populateDiscussions(space_url) {
 
                         for (var ind = 0; ind < categg4.length; ind++) {
                             if (categg4[ind] == selected_cat) {
-                                console.log("categg4= " + categg4);
-                                console.log("selected_cat= " + selected_cat);
+                                //console.log("categg4= " + categg4);
+                                //console.log("selected_cat= " + selected_cat);
                                 //console.log(document.getElementById("disc_cb"+index).value);
                                 var temp_id = "disc_cb" + index;
                                 console.log("temp_id= " + temp_id);
@@ -3700,8 +3700,8 @@ function populateIdeas(space_url) {
 
                         for (var ind = 0; ind < categg5.length; ind++) {
                             if (categg5[ind] == selected_cat) {
-                                console.log("categg5= " + categg5);
-                                console.log("selected_cat= " + selected_cat);
+                                //console.log("categg5= " + categg5);
+                                //console.log("selected_cat= " + selected_cat);
                                 //console.log(document.getElementById("idea_cb"+index).value);
                                 var temp_id = "idea_cb" + index;
                                 console.log("temp_id= " + temp_id);
@@ -3822,8 +3822,8 @@ function populatePolls(space_url) {
 
                         for (var ind = 0; ind < categg6.length; ind++) {
                             if (categg6[ind] == selected_cat) {
-                                console.log("categg6= " + categg6);
-                                console.log("selected_cat= " + selected_cat);
+                                //console.log("categg6= " + categg6);
+                                //console.log("selected_cat= " + selected_cat);
                                 //console.log(document.getElementById("poll_cb"+index).value);
                                 var temp_id = "poll_cb" + index;
                                 console.log("temp_id= " + temp_id);
@@ -3890,7 +3890,7 @@ function categSel()
 {
 
 selected_cat=document.getElementById('cat_sel').value;
-alert("selected_cat = "+selected_cat);
+//alert("selected_cat = "+selected_cat);
 if (selected_cat=="val1")
 {
 $("#cat_select_items_button").hide();
