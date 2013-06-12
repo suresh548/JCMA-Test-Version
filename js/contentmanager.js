@@ -1,4 +1,30 @@
-ar errorDeReferenceCatArray = new Array();
+var errorReferenceCatArray = new Array();
+var errorDeReferenceCatArray = new Array();
+var referenceCatArrayIndex =0;
+var deReferenceCatArrayIndex =0;
+var dotIndex  =0;
+var tagPopulatList = new Array();
+var completeTagIndex = 0;
+var fromRequestAction = '';
+var global_from_place_name='';
+var site_url = document.referrer;
+var uploadContinueAction = false;
+var downloadContinueAction = false;
+//for categories
+var contentCheckedIndex =0;
+var contentUnCheckedIndex =0;
+var catSelection = false;
+var catIndex = 0;
+var catRedirectUrl='';
+//end
+//for tags
+var tagSelection = false;
+var tagIndex = 0;
+var tagRedirectUrl='';
+//end
+var addId=new Array();
+var arrayIndex=0;
+
 var browserName='';
 var loggedUser='';
 var loggedUserName='';
