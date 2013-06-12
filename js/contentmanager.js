@@ -33,6 +33,8 @@ var mainCheckedItems = new Array();
 var mainUncheckItems = new Array();
 var contentCheckedIndex =0;
 var contentUnCheckedIndex =0;
+var catIndex = 0;
+
 
 function showLoading() 
 {
