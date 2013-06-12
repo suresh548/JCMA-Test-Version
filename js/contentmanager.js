@@ -4368,10 +4368,10 @@ else {
 				$('#catTo').show();
 				$('#catTo').text('Manage content for this category:');
 				$('#cat_select_items_button').show();
-				$('#cat_place').css("margin-left", "250px");
-				$('#cat_sel').css("margin-left", "250px");
+				//$('#cat_place').css("margin-left", "250px");
+				//$('#cat_sel').css("margin-left", "250px");
 				$('#selected_items').hide();
-				$('#catTo').css("margin-top", "230px");
+				//$('#catTo').css("margin-top", "230px");
 			}
 			else {
 
