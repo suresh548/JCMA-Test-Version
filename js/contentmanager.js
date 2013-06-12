@@ -662,75 +662,89 @@ $('#button_div').hide();
 else if(sel_action_val=="tags"){
 src_space_name='';
 dest_space_name='';
-$("#tagShow").show();
+$("#tag_place").css("margin-top", 0);
+//Show the items related to tags and hide the others
 $("#catShow").hide();
-$("#deleteTo").hide();
-$("#tag_select_items_button").hide();
-$("#selCat").hide();
-$("#cat_place").hide();
-$("#cat_sel").hide();
 $("#catFrom").hide();
+$("#cat_place").hide();
+$("#selCat").hide();
+$("#catTo").hide();
+$("#cat_select_items_button").hide();
 $("#cat_from_space").hide();
 $("#cat_from_group").hide();
 $("#cat_from_project").hide();
-$("#catTo").hide();
-$("#cat_select_items_button").hide();
-document.getElementById("tag_place").style.display="inline";
-$("#tag_place").show();
-$("#tagFrom").css("margin-top", "-40px");
+//*********************End*********************
+
+//Hide all the items with regard to Manage Tags*************
+$("#tagShow").show();
 $("#tagFrom").show();
-$("#tag_place").css("margin-top", parseInt($("#tagFrom").css("margin-top"))+parseInt($("#tagFrom").css("height"))+10+'px');
-//$("#tag_place").css("margin-top", "-20px");
-$("#del_place").css("margin-top", "110px");
-//$('#tag_place').css("margin-top", "110px");
+$("#tag_place").show();
+$("#selTag").hide();
+$("#tag_sel").hide();
+$("#tagTo").hide();
+$("#tag_from_space").hide();
+$("#tag_from_group").hide();
+$("#tag_from_project").hide();
+$("#add_tag_button").hide();
+$("#tag_select_items_button").hide();
+document.getElementById("cat_place").style.display="inline";
+//*************End****************
+
+//Hide all the items with regard to download
+$("#dwnShow").hide();
 $("#dwnFrom").hide();
-$("#del_place").hide();
 $("#dwn_from_space").hide();
 $("#dwn_from_group").hide();
 $("#dwn_from_project").hide();
 $("#dwn_place").hide();
 $("#dwnTo").hide();
-$("#cmdu").text("Delete");
 $("#dwn_select_items_button").hide();
-$("#dwnFrom").hide();
+
 $("#tab_items").show();
-$('#all_selected_items').css("margin-top", "80px");
-$('#selected_items').css("margin-top", "80px");
 $("#change_selection_div").hide();
+$("#selected_items_categories").hide();
+$('#select_items_button').hide();
 $("#showDiv").hide();
-//document.getElementById("del_place").style.display="inline";
+$("#copyTo").hide();
+document.getElementById("del_place").style.display="inline";
 document.getElementById("del_select_items_button").style.display="inline";
 document.getElementById("up_select_items_button").style.display="inline";
 document.getElementById("up_place").style.display="inline";
-$("#del_place").css("margin-top", "110px");
-$("#del_select_items_button").hide();
-$("#up_select_items_button").hide();
-$("#dwn_select_items_button").hide();
-$("#copyTo").hide();
-$("#up_place").hide();
+//*******************hide all items with regard to delete
 $("#delShow").hide();
-$("#catShow").hide();
-$("#tagShow").show();
-$("#upShow").hide();
-$("#upTo").hide();
+$("#deleteFrom").hide();
 $("#del_from_space").hide();
 $("#del_from_group").hide();
 $("#del_from_project").hide();
+$("#del_place").hide();
+$("#deleteTo").hide();
+$("#del_select_items_button").hide();
+
+//*************Hide all elements with regard to upload
+$("#upShow").hide();
+$("#up_place").hide();
+$('#upFrom').hide();
+$("#up_select_items_button").hide();
 $("#up_from_space").hide();
 $("#up_from_group").hide();
 $("#up_from_project").hide();
+$("#upTo").hide();
+
+
 document.getElementById("deleteFrom").style.display="inline";
 document.getElementById("upFrom").style.display="inline";
-$('#upFrom').hide();
+
 $('#from_label').hide();
 $('#to_label').hide();
+$('#from_space').hide();
+$('#from_group').hide();
+$('#from_project').hide();
+$('#to_space').hide();
+$('#to_group').hide();
+$('#to_project').hide();
+$('#from_place').hide();
 $('#to_place').hide();
-$("#to_space").hide();
-$("#to_group").hide();
-$("#to_project").hide();
-$('#select_items_button').hide();	
-$('#start_copying_button').val('Start Deleting');
-$('#start_copying_button').unbind('click').click(function(){startDeleting();});
+$('#button_div').hide();
 }
 
 else if(sel_action_val=="select_action"){
