@@ -4390,6 +4390,7 @@ else {
 		$('#cmdu').hide();
 		$('#src_place').show();
 		document.getElementById("cat_place").style.display="inline";
+		document.getElementById("cat_sel").style.display="inline";
 		$('#cat_place').show();
 		//$('#selCat').css("margin-top", "-270px");
 		//$('#cat_place').css("margin-top", "-290px");
