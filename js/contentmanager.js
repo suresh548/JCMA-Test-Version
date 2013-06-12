@@ -2519,8 +2519,12 @@ function goBack(){
 // handles the code for creating the final selection tables and the list of values to be passed to the server/javascript
 if(sel_action_val=="categs")
 {
+startUpdatingCategories();
+}
+else if(sel_action_val=="tags")
+{
 	
-		startUpdatingCategories();
+		startUpdatingTags();
 }
 else {
 all_selected='';
@@ -4431,6 +4435,489 @@ else {
 		var str='Updating categories has completed. Please click   <a href='+tempRedirectionUrl+'>here </a>  to review the result.';
 		document.getElementById("frame1").contentDocument.body.innerHTML = "Note:<br><br><span id='mySpan' style='font-weight:bold;'>"+str.fontcolor("#3778C7")+"</span>";
 		
+		}
+		
+		
+}
+
+
+
+}
+
+
+function startUpdatingTags() {
+	//alert("tag selectionn....");
+	//alert("browserName = "+browserName);
+
+$("#tagFrom").css("margin-left", "210px");
+$("#tagFrom").css("margin-top", "-290px");
+$("#tag_from_space").css("margin-top", "-250px");
+$("#tag_from_group").css("margin-top", "-250px");
+$("#tag_from_project").css("margin-top", "-250px");
+$("#selTag").show();
+$('#selTag').text("Selected Tag");
+$("#selTag").css("margin-left", "205px");
+$("#selTag").css("margin-top", "135px");
+$("#add_tag").css("margin-left", "240px");
+$("#add_tag").css("margin-top", "145px");
+
+$("#tagTo").css("margin-left", "250px");
+$("#tagTo").css("margin-top", "170px");
+
+$("#selection_menu").hide();
+$("#stylized").show();
+$("#change_selection_div").show();
+$("#change_contents").hide();
+$("#start_copying_button").hide();
+
+$("#cmdu").show();
+$("#cmdu").text("Manage Tags");
+$("#src_place").hide();
+$("#start_copying_button").hide();
+$("#change_contents").hide();
+$("#button_div").hide();
+$("#tag_place").hide();
+$("#tag_sel").hide();
+//$("#selTag").hide();
+$("#tagTo").show();
+$("#tag_select_items_button").hide();
+
+
+
+$("#selected_items").show();
+
+if(browserName=="MSIE")
+{
+var ieSpan='<span id="ieSpan" style="font-family:Tahoma;font-size:12px;font-color:#3778C7;"></span>';
+document.getElementById("selected_items").innerHTML=ieSpan; 
+}
+else
+{
+var iframe = '<iframe id="frame1"  style="width:650px;height:90px;margin-top:0px;font-family:Tahoma"></iframe>';
+document.getElementById("selected_items").innerHTML=iframe;  
+$("#tagTo").text("Updating Tags:");
+}
+
+if(browserName=="MSIE")
+{
+var finalurl=redirection_url+'/content';
+document.getElementById("ieSpan").innerHTML = 'The selected contents are being update with tag. The update contents will appear here in a short while: <a href='+'URL'+'>'+''+' - Contents</a>';
+}
+else
+{
+document.getElementById("frame1").contentDocument.body.style.fontFamily="Tahoma";	
+document.getElementById("frame1").contentDocument.body.style.fontSize = "12px";
+document.getElementById("frame1").contentDocument.body.style.color='Grey';
+document.getElementById("frame1").contentDocument.body.innerHTML = "Updating tags is in Progress.<br>Please leave this window open until the updating process has been completed.<br><br><span id='mySpan' style='font-weight:bold;'>"+'Updating content'.fontcolor("#3778C7")+"</span>";
+}
+	for(var index=0; index < mainCheckedItems.length;index++) {
+		//	alert("checked items : "+mainCheckedItems[index]);
+			//console.log("checked items : "+mainCheckedItems[index]);
+		}
+		
+		for(var index=0;index < mainUncheckItems.length;index++) {
+		//alert("unchecked items : "+mainUncheckItems[index]);
+			//console.log("unchecked items : "+mainUncheckItems[index]);
+		}
+		
+		//alert("mainCheckedItems.length = "+mainCheckedItems.length);
+		//console.log("mainCheckedItems.length = "+mainCheckedItems.length);
+		//alert("mainUncheckItems.length = "+mainUncheckItems.length);
+		//console.log("mainUncheckItems.length = "+mainUncheckItems.length);
+		//***********************************
+		filterCheckedUncheckTagUrl1();
+		
+	
+		catIndex = 0;
+		//updateTagsForNewContents1();
+		//removeTagsForContents();
+}
+
+function filterCheckedUncheckTagUrl1(){
+
+	alert("Into filterCheckedUncheckTagUrl1");
+	 checkItemArrayUpdated = new Array();
+ uncheckedItemArrayUpdated = new Array();
+  checkedItemsArray = new Array();
+ uncheckItemArray = new Array();
+  errorReferenceCatArray = new Array();
+ errorReferenceCatArray = new Array();
+ referenceCatArrayIndex = 0;
+ deReferenceCatArrayIndex = 0;
+
+	var contentTypeCheckBoxIdArray = new Array();
+
+              contentTypeCheckBoxIdArray[0] = '#filesTable input[type=checkbox]';
+                  contentTypeCheckBoxIdArray[1] = '#docsTable input[type=checkbox]';
+                  contentTypeCheckBoxIdArray[2] = '#ideaTable input[type=checkbox]';
+                  contentTypeCheckBoxIdArray[3] = '#pollTable input[type=checkbox]';
+                  contentTypeCheckBoxIdArray[4] = '#blogTable input[type=checkbox]';
+                  contentTypeCheckBoxIdArray[5] = '#discTable input[type=checkbox]';
+
+
+                  var checkedIndex = 0;
+                  var uncheckedIndex = 0;
+        var val = [];
+                                for(index =0;index <  contentTypeCheckBoxIdArray.length;index++) {
+        //$('#filesTable input[type=checkbox]').each(function(i){
+                                $(contentTypeCheckBoxIdArray[index]).each(function(i){
+                                                
+                                val[i] = $(this).val();
+                                // alert(contentTypeCheckBoxIdArray[index]);
+                                if(val[i] != 'on'){
+                                if($(this).is(':checked')){
+                              //  alert("its true"+ "This "+$(this).val());
+                                                checkedItemsArray[checkedIndex] = $(this).val();
+                                                checkedIndex++;
+                                }
+                                else {
+                                                            //    alert("its false"+ "This "+$(this).val());
+                                                uncheckItemArray[uncheckedIndex] = $(this).val();
+                                                uncheckedIndex++;
+                                }
+                                }
+                                
+                
+                    });
+                                
+                                }
+									
+	for(var index=0; index < checkedItemsArray.length;index++) {
+      //alert("new checked items : "+checkedItemsArray[index]);
+      console.log("new checked items : "+checkedItemsArray[index]);
+    }
+  for(var index=0;index < uncheckItemArray.length;index++) {
+      //alert("new unchecked items : "+uncheckedItemArrayUpdated[index]);
+      console.log("new unchecked items : "+uncheckItemArray[index]);
+    }
+
+                //  alert("checkedItemsArray.length = "+checkedItemsArray.length);
+                   console.log("checkedItemsArray.length = "+checkedItemsArray.length);
+                // alert("uncheckItemArray.length = "+uncheckItemArray.length);
+                 console.log("uncheckItemArray.length = "+uncheckItemArray.length);
+				catIndex = 0;
+				dotIndex = 0;
+			//alert("mainCheckedItems.length = "+mainCheckedItems.length);
+             console.log("mainCheckedItems.length = "+mainCheckedItems.length);
+             //    alert("mainUncheckItems.length = "+mainUncheckItems.length);
+             console.log("mainUncheckItems.length = "+mainUncheckItems.length);
+								
+									
+									for(var index=0; index < mainCheckedItems.length;index++) {
+										console.log("checked items : "+mainCheckedItems[index]);
+									}
+									
+									for(var index=0;index < mainUncheckItems.length;index++) {
+										console.log("unchecked items : "+mainUncheckItems[index]);
+									}
+									
+									/*Filter the the list */
+		var checkedIndex = 0;
+		var uncheckedIndex = 0;
+		for(var outerIndex=0;outerIndex < checkedItemsArray.length;outerIndex++) {
+			if(mainCheckedItems.length != 0) {
+			for(var innerIndex=0;innerIndex< mainCheckedItems.length;innerIndex++) {
+				//alert("checkedItemsArray[outerIndex] = mainCheckedItems[innerIndex] :" +checkedItemsArray[outerIndex] == mainCheckedItems[innerIndex]);
+				//alert("checkedItemsArray[outerIndex] = mainCheckedItems[innerIndex] :" +checkedItemsArray[outerIndex] == mainCheckedItems[innerIndex]);
+				if(checkedItemsArray[outerIndex] == mainCheckedItems[innerIndex]) {
+					break;
+				}
+				else {
+					if(innerIndex == (mainCheckedItems.length - 1)) {
+					checkItemArrayUpdated[checkedIndex] = checkedItemsArray[outerIndex];
+					checkedIndex++;
+					}
+					
+				}
+			}
+			}else {
+			checkItemArrayUpdated[checkedIndex] = checkedItemsArray[outerIndex];
+					checkedIndex++;
+					}
+		}
+		
+		
+		
+		for(var outerIndex=0;outerIndex < uncheckItemArray.length;outerIndex++) {
+			if(mainUncheckItems.length !=0) {
+			for(var innerIndex=0;innerIndex< mainUncheckItems.length;innerIndex++) {
+				//alert("checkedItemsArray[outerIndex] = mainCheckedItems[innerIndex] :" +checkedItemsArray[outerIndex] == mainCheckedItems[innerIndex]);
+				if(uncheckItemArray[outerIndex] == mainUncheckItems[innerIndex]) {
+					break;
+				}
+				else {
+					if(innerIndex == (mainUncheckItems.length - 1)) {
+					uncheckedItemArrayUpdated[uncheckedIndex] = uncheckItemArray[outerIndex];
+					uncheckedIndex++;
+					}
+					
+				}
+			}
+			}
+			else {
+				uncheckedItemArrayUpdated[uncheckedIndex] = uncheckItemArray[outerIndex];
+				uncheckedIndex++;
+			}
+		}
+		
+		//alert("checkItemArrayUpdated.length = "+checkItemArrayUpdated.length);
+		console.log("checkItemArrayUpdated.length = "+checkItemArrayUpdated.length);
+		//alert("uncheckedItemArrayUpdated.length = "+uncheckedItemArrayUpdated.length);
+		console.log("uncheckedItemArrayUpdated.length = "+uncheckedItemArrayUpdated.length);
+								
+		
+		for(var index=0; index < checkItemArrayUpdated.length;index++) {
+			//alert("new checked items : "+checkItemArrayUpdated[index]);
+			console.log("new checked update items : "+checkItemArrayUpdated[index]);
+		}
+		for(var index=0;index < uncheckedItemArrayUpdated.length;index++) {
+			//alert("new unchecked items : "+uncheckedItemArrayUpdated[index]);
+				console.log("new unchecked update items : "+uncheckedItemArrayUpdated[index]);
+		}
+		        updateTagsForNewContents1();
+		
+		}
+		
+		function updateTagsForNewContents1() {
+	//alert("Into the updateCategories for new contents");
+	console.log("Into the updateTagsForNewContents1 for new contents");
+	for(var index=0; index < checkedItemsArray.length;index++) {
+			//alert("new checked items : "+checkedItemsArray[index]);
+			//console.log("new checked items : "+checkedItemsArray[index]);
+		}
+	for(var index=0;index < uncheckedItemArrayUpdated.length;index++) {
+			//alert("new unchecked items : "+uncheckedItemArrayUpdated[index]);
+			//	console.log("new unchecked items : "+uncheckedItemArrayUpdated[index]);
+		}
+
+		//alert("checkItemArrayUpdated.length = "+uncheckItemArray.length+" catIndex ="+catIndex);
+	//console.log("checkItemArrayUpdated.length = "+uncheckItemArray.length+" catIndex="+catIndex);
+		
+if(catIndex < checkItemArrayUpdated.length) {
+
+	var contentURL = checkItemArrayUpdated[catIndex];
+	var toUpdateTags;
+	var toTagsArray;
+	var updatedTagList = new Array();
+	var isTagExisting =false;
+	
+	//alert("contentURL got is ="+contentURL);
+	console.log("contentURL got is ="+contentURL);
+	//alert("catIndex = "+catIndex+"checkedItemsArray length ="+checkedItemsArray.length);
+	//alert("contentURL="+contentURL);
+	
+	if(contentURL != 'undefined')
+	{
+	osapi.jive.corev3.contents.get({
+	fields: '@all',	
+	uri: contentURL
+	}).execute(function(contentCatResponseObj){
+				//alert(JSON.stringify(contentCatResponseObj));
+				//console.log(JSON.stringify(contentCatResponseObj));
+				
+					//console.log(contentCatResponseObj.tags);
+					//alert("selected_cat = "+selected_cat);
+				toUpdateTags = contentCatResponseObj.tags;
+				var str='Applying tag '+selected_cat+' to '+contentCatResponseObj.type+'';
+				for(index =0;index < dotIndex;index++) 
+					str = str +'.';
+					dotIndex++;
+				if(dotIndex == 4) dotIndex = 0;
+				document.getElementById("frame1").contentDocument.body.innerHTML = "Applying tags in Progress.<br>Please leave this window open until the updating process has been completed.<br><br><span id='mySpan' style='font-weight:bold;'>"+str.fontcolor("#3778C7")+"</span>";
+
+				var tempIndex =0;
+				for(var index=0;index < toUpdateTags.length;index++,tempIndex++) {
+						//alert("---cc-"+toUpdateTags[index]);
+						//console.log("---cc-"+toUpdateTags[index]);
+						updatedTagList[tempIndex]=toUpdateTags[index];
+						if(toUpdateTags[index] == selected_tag) {
+						isTagExisting = true;
+						}
+						
+						
+				}
+			//	alert("isTagExisting = "+isTagExisting);
+					if(!isTagExisting){
+						updatedTagList[tempIndex]=selected_tag;
+						isTagExisting = false;
+					}
+					
+				for(var index=0;index < updatedTagList.length;index++,tempIndex++) {
+					//console.log("VVVV-- "+updatedTagList[index]);
+				}
+				
+				//console.log("toUpdateTags = "+toUpdateTags);
+				var title = contentCatResponseObj.subject;
+				title = title.replace('&amp;','&');
+				title = title.replace('&lt;','<');
+				title = title.replace('&gt;','>');
+				contentCatResponseObj.subject = title;
+				contentCatResponseObj.tags = updatedTagList;
+				                
+				contentCatResponseObj.update().execute(function(catUpdateResponse){
+				
+				//console.log("updated --"+JSON.stringify(catUpdateResponse));
+				
+				if (catUpdateResponse.error){
+        errorReferenceCatArray[referenceCatArrayIndex] = contentCatResponseObj.resources.html.ref;
+        referenceCatArrayIndex++;
+        
+        }
+
+				
+				});
+				catIndex++;
+				updateTagsForNewContents1();
+				
+			});
+			}
+
+}
+else {
+catIndex = 0;
+dotIndex=0;
+removeTagsForContents();
+}
+
+}
+
+function removeTagsForContents() {
+	
+		
+if(catIndex < uncheckedItemArrayUpdated.length) {
+
+	var contentURL = uncheckedItemArrayUpdated[catIndex];
+	var toUpdateTags;
+	var toTagsArray;
+	var updatedCategoryList = new Array();
+	//alert("catIndex = "+catIndex+"uncheckItemArray length ="+uncheckItemArray.length);
+	//alert("contentURL got is ="+contentURL);
+	console.log("contentURL got is ="+contentURL);
+	osapi.jive.corev3.contents.get({
+	fields: '@all',	
+	uri: contentURL
+	}).execute(function(contentCatResponseObj){
+				//alert(JSON.stringify(contentCatResponseObj));
+				console.log(JSON.stringify(contentCatResponseObj));
+				
+					//alert(contentCatResponseObj.categories);
+					//alert("selected_cat = "+selected_cat);
+				var str='Removing tag '+selected_cat+' from '+contentCatResponseObj.type+'';
+				for(index =0;index < dotIndex;index++) 
+					str = str +'.';
+					dotIndex++;
+				if(dotIndex == 4) dotIndex = 0;
+				document.getElementById("frame1").contentDocument.body.innerHTML = "Removing tags in Progress.<br>Please leave this window open until the updating process has been completed.<br><br><span id='mySpan' style='font-weight:bold;'>"+str.fontcolor("#3778C7")+"</span>";
+
+				var title = contentCatResponseObj.subject;
+				title = title.replace('&amp;','&');
+				title = title.replace('&lt;','<');
+				title = title.replace('&gt;','>');
+				contentCatResponseObj.subject = title;
+				toUpdateTags = contentCatResponseObj.tags;
+				//toUpdateTags = toUpdateTags+','+selected_cat;
+				//toUpdateTags = ["cat1","cat2","cat3"];
+				//toTagsArray = toUpdateTags.split(",");
+				var tempIndex =0;
+				for(var index=0;index < toUpdateTags.length;index++) {
+						if(selected_tag != toUpdateTags[index]){
+						//	alert("---cc-"+toUpdateTags[index]);
+							console.log("---cc-"+toUpdateTags[index]);
+							updatedCategoryList[tempIndex]=toUpdateTags[index];
+							tempIndex++;
+						}
+				}
+				
+				//toUpdateTags = selected_cat;
+				//alert("toUpdateTags = "+toUpdateTags);
+				console.log("toUpdateTags = "+toUpdateTags);
+				//contentCatResponseObj.categories = toUpdateTags;
+				contentCatResponseObj.tags = updatedCategoryList;
+				contentCatResponseObj.update().execute(function(catUpdateResponse){
+				//alert(JSON.stringify(catUpdateResponse));
+				console.log("UPDated -- "+JSON.stringify(catUpdateResponse));
+				});
+				catIndex++;
+				removeTagsForContents();
+				
+			});
+
+}
+else {
+			for(var index = 0;index < errorReferenceCatArray.length;index++) {
+              console.log("Could Not Reference "+errorReferenceCatArray[index]);
+            } 
+
+            for(var index = 0;index < errorDeReferenceCatArray.length;index++) {
+              console.log("Could Not De-Reference "+errorDeReferenceCatArray[index]);
+            }  
+			if(errorReferenceCatArray.length > 0 || errorDeReferenceCatArray.length>0) {
+				alert('Message:\n\nYou have insufficient rights to update all the content selected.\n\nYou need to have group administration or space moderation rights to update content with restricted authorship (e.g. discussions started by other users).\n\nPlease contact your group or space admin to get the necessary rights.');
+				$("#cmdu").hide();
+				$("#src_place").show();
+				$("#tag_place").show();
+				$('#tag_place').css("margin-top", "-235px");
+				$('#tag_place').css("margin-left", "250px");
+				$("#tag_from_project").hide();
+				$('#selTag').css("margin-top", "-200px");
+				$('#selTag').css("margin-left", "200px");
+				$("#selTag").show();
+				$('#tag_sel').css("margin-top", "-190px");
+				$('#tag_sel').css("margin-left", "250px");
+				$("#tag_sel").show();
+				$('#add_tag_button').css("margin-top", "-190px");
+				$('#add_tag_button').css("margin-left", "390px");
+				$("#add_tag_button").show();
+				
+			}
+			else {
+			//alert("inside else ");
+			$("#cmdu").hide();
+			$("#src_place").show();
+			$("#tag_place").show();
+			$('#tag_place').css("margin-top", "-235px");
+			$('#tag_place').css("margin-left", "250px");
+			if($("#tag_from_space").text() !='Manage Tags in Space')
+			$("#tag_from_space").show();
+			else 
+			$("#tag_from_space").hide();
+			if($("#tag_from_group").text() !='Manage Tags in Group')
+			$("#tag_from_group").show();
+			else 
+			$("#tag_from_group").hide();
+			if($("#tag_from_project").text() !='Manage Tags in Project')
+			$("#tag_from_project").show();
+			else
+			$("#tag_from_project").hide();
+			$('#selTag').css("margin-top", "-200px");
+			$('#selTag').css("margin-left", "200px");
+			$("#selTag").show();
+			$('#tag_sel').css("margin-top", "-190px");
+			$('#tag_sel').css("margin-left", "250px");
+			$("#tag_sel").show();
+			$('#add_tag_button').css("margin-top", "-190px");
+			$('#add_tag_button').css("margin-left", "390px");
+			$("#add_tag_button").show();
+
+            for(var index = 0;index < errorReferenceCatArray.length;index++) {
+              console.log("Could Not Reference "+errorReferenceCatArray[index]);
+            } 
+
+            for(var index = 0;index < errorDeReferenceCatArray.length;index++) {
+              console.log("Could Not De-Reference "+errorDeReferenceCatArray[index]);
+            }  
+	console.log("tag "+selected_cat+" succesfully updated");
+		//alert("Category "+selected_cat+" succesfully updated");
+		var tempRedirectionUrl = source_html_url+'/content?filterID=contentstatus[published]~tag['+selected_tag+']';
+		
+		console.log("temRedirectionUrl = "+tempRedirectionUrl);
+		/*$("#stylized").fadeOut(5000,function(){
+		window.location = window.location = tempRedirectionUrl;
+			});*/
+			
+		/*document.getElementById("frame1").contentDocument.body.innerHTML = "Updating is in Progress.<br>Please leave this window open until the updating process has been completed.<br><br><span id='mySpan' style='font-weight:bold;'>"+"'Moving completed. Please click   <a href='+tempRedirectionUrl+'>here </a>  for the new location of your content.'.fontcolor("#3778C7")+"</span>";*/
+		var str='Updating tags is completed. Please click   <a href='+tempRedirectionUrl+'>here </a>  for the new location of your content.';
+		document.getElementById("frame1").contentDocument.body.innerHTML = "Note.<br><br><span id='mySpan' style='font-weight:bold;'>"+str.fontcolor("#3778C7")+"</span>";
 		}
 		
 		
