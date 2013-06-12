@@ -569,7 +569,7 @@ $('#start_copying_button').unbind('click').click(function(){startDownloading();}
 else if(sel_action_val=="categs"){
 src_space_name='';
 dest_space_name='';
-$("#cat_place").css("margin-top", "0px");
+$("#cat_place").css("margin-top", 0);
 //Show the items related to categories and hide the others
 $("#cmdu").text("Manage Categories");
 $("#catShow").show();
@@ -1034,7 +1034,7 @@ $("#dwn_from_project").hide();
 }
 else if(sel_action_val=="categs")
 {
-$("#cat_place").css("margin-top", "0px");
+$("#cat_place").css("margin-top", 0);
 
 // actions when the user choses to download files.
 $("#catShow").show();
