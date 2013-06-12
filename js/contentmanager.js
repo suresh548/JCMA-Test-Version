@@ -1,3 +1,4 @@
+ar errorDeReferenceCatArray = new Array();
 var browserName='';
 var loggedUser='';
 var loggedUserName='';
