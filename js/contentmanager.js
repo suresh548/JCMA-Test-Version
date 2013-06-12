@@ -1147,6 +1147,15 @@ $("#cat_place").css("margin-top", "40px");
 categoryTest();
 }
 
+else if(sel_action_val=="tags")
+{
+// actions when the user choses to download files.
+//$('#tag_place').css("margin-top", "120px");
+tagPopulatList =  new Array();
+completeTagIndex = 0;
+fromRequestAction = 'fromSpaceRequestAction';
+populateContentforTags(space_url,blog_url);
+}
 else if(sel_action_val=="select_action")
 {
 // actions if user changes action to default value.
