@@ -4417,6 +4417,7 @@ else {
 			$("#cat_from_project").show();
 			else
 			$("#cat_from_project").hide();
+			$("#finalCatShow").hide();
 		//$('#cat_sel').css("margin-left", "250px");
 		//$('#selected_items').css("margin-top", "145px");
 		//$('#catTo').css("margin-top", "230px");
