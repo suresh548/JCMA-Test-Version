@@ -4389,6 +4389,7 @@ else {
 		document.getElementById("frame1").contentDocument.body.innerHTML = "Updating Categories in Progress.<br>Please leave this window open until the moving process has been completed.<br><br><span id='mySpan' style='font-weight:bold;'>"+str.fontcolor("#3778C7")+"</span>";*/
 		$('#cmdu').hide();
 		$('#src_place').show();
+		document.getElementById("cat_place").style.display="inline";
 		$('#cat_place').show();
 		//$('#selCat').css("margin-top", "-270px");
 		//$('#cat_place').css("margin-top", "-290px");
