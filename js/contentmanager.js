@@ -4000,11 +4000,405 @@ document.getElementById("frame1").contentDocument.body.innerHTML = "Updating cat
 		//alert("mainUncheckItems.length = "+mainUncheckItems.length);
 		//console.log("mainUncheckItems.length = "+mainUncheckItems.length);
 		//***********************************
-		//filterCheckedUncheckCatgUrl1();
+		filterCheckedUncheckCatgUrl1();
 		
 	
 		catIndex = 0;
 		//updateCategoriesForNewContents1();
 		//removeCategoriesForContents();
+}
+
+function filterCheckedUncheckCatgUrl1(){
+	var contentTypeCheckBoxIdArray = new Array();
+	  checkedItemsArray = new Array();
+ uncheckItemArray = new Array();
+ checkItemArrayUpdated = new Array();
+ uncheckedItemArrayUpdated = new Array();
+ errorReferenceCatArray = new Array();
+ errorReferenceCatArray = new Array();
+ referenceCatArrayIndex = 0;
+ deReferenceCatArrayIndex = 0;
+ 
+	              contentTypeCheckBoxIdArray[0] = '#filesTable input[type=checkbox]';
+                  contentTypeCheckBoxIdArray[1] = '#docsTable input[type=checkbox]';
+                  contentTypeCheckBoxIdArray[2] = '#ideaTable input[type=checkbox]';
+                  contentTypeCheckBoxIdArray[3] = '#pollTable input[type=checkbox]';
+                  contentTypeCheckBoxIdArray[4] = '#blogTable input[type=checkbox]';
+                  contentTypeCheckBoxIdArray[5] = '#discTable input[type=checkbox]';
+
+
+                  var checkedIndex = 0;
+                  var uncheckedIndex = 0;
+        var val = [];
+                                for(index =0;index <  contentTypeCheckBoxIdArray.length;index++) {
+        //$('#filesTable input[type=checkbox]').each(function(i){
+                                $(contentTypeCheckBoxIdArray[index]).each(function(i){
+                                                
+                                val[i] = $(this).val();
+                                // alert(val[i]);
+                                if(val[i] != 'on'){
+                                if($(this).is(':checked')){
+                                //alert("true");
+                                                checkedItemsArray[checkedIndex] = $(this).val();
+                                                checkedIndex++;
+                                }
+                                else {
+                                                                // alert("false");
+                                                uncheckItemArray[uncheckedIndex] = $(this).val();
+                                                uncheckedIndex++;
+                                }
+                                }
+                                
+                
+                    });
+                                
+                                }
+                              //  alert("checkedItemsArray.length = "+checkedItemsArray.length);
+                                console.log("checkedItemsArray.length = "+checkedItemsArray.length);
+                              //  alert("uncheckItemArray.length = "+uncheckItemArray.length);
+                                console.log("uncheckItemArray.length = "+uncheckItemArray.length);
+								
+									
+									for(var index=0; index < checkedItemsArray.length;index++) {
+										console.log("checked items : "+checkedItemsArray[index]);
+									}
+									
+									for(var index=0;index < uncheckItemArray.length;index++) {
+										console.log("unchecked items : "+uncheckItemArray[index]);
+									}
+									
+								//	alert("mainCheckedItems.length = "+mainCheckedItems.length);
+                                console.log("mainCheckedItems.length = "+mainCheckedItems.length);
+                             //   alert("mainUncheckItems.length = "+mainUncheckItems.length);
+                                console.log("mainUncheckItems.length = "+mainUncheckItems.length);
+								
+									
+									for(var index=0; index < mainCheckedItems.length;index++) {
+										console.log("checked items : "+mainCheckedItems[index]);
+									}
+									
+									for(var index=0;index < mainUncheckItems.length;index++) {
+										console.log("unchecked items : "+mainUncheckItems[index]);
+									}
+									
+									/*Filter the the list */
+		var checkedIndex = 0;
+		var uncheckedIndex = 0;
+		for(var outerIndex=0;outerIndex < checkedItemsArray.length;outerIndex++) {
+		if(mainCheckedItems.length !=0) {
+			for(var innerIndex=0;innerIndex< mainCheckedItems.length;innerIndex++) {
+				//alert("checkedItemsArray[outerIndex] = mainCheckedItems[innerIndex] :" +checkedItemsArray[outerIndex] == mainCheckedItems[innerIndex]);
+				//alert("checkedItemsArray[outerIndex] = mainCheckedItems[innerIndex] :" +checkedItemsArray[outerIndex] == mainCheckedItems[innerIndex]);
+				if(checkedItemsArray[outerIndex] == mainCheckedItems[innerIndex]) {
+					break;
+				}
+				else {
+					if(innerIndex == (mainCheckedItems.length - 1)) {
+					checkItemArrayUpdated[checkedIndex] = checkedItemsArray[outerIndex];
+					checkedIndex++;
+					}
+					
+				}
+			}
+			}
+			else {
+				checkItemArrayUpdated[checkedIndex] = checkedItemsArray[outerIndex];
+				checkedIndex++;
+			}
+		}
+		
+		
+		
+		for(var outerIndex=0;outerIndex < uncheckItemArray.length;outerIndex++) {
+		if(mainUncheckItems.length != 0) {
+			for(var innerIndex=0;innerIndex< mainUncheckItems.length;innerIndex++) {
+				//alert("checkedItemsArray[outerIndex] = mainCheckedItems[innerIndex] :" +checkedItemsArray[outerIndex] == mainCheckedItems[innerIndex]);
+				if(uncheckItemArray[outerIndex] == mainUncheckItems[innerIndex]) {
+					break;
+				}
+				else {
+					if(innerIndex == (mainUncheckItems.length - 1)) {
+					uncheckedItemArrayUpdated[uncheckedIndex] = uncheckItemArray[outerIndex];
+					uncheckedIndex++;
+					}
+					
+				}
+			}
+			}
+			else {
+				uncheckedItemArrayUpdated[uncheckedIndex] = uncheckItemArray[outerIndex];
+				uncheckedIndex++;
+			}
+		}
+		
+	//	alert("checkItemArrayUpdated.length = "+checkItemArrayUpdated.length);
+		console.log("checkItemArrayUpdated.length = "+checkItemArrayUpdated.length);
+	//	alert("uncheckedItemArrayUpdated.length = "+uncheckedItemArrayUpdated.length);
+		console.log("uncheckedItemArrayUpdated.length = "+uncheckedItemArrayUpdated.length);
+								
+		
+		for(var index=0; index < checkItemArrayUpdated.length;index++) {
+			//alert("new checked items : "+checkItemArrayUpdated[index]);
+			console.log("new checked update items : "+checkItemArrayUpdated[index]);
+		}
+		for(var index=0;index < uncheckedItemArrayUpdated.length;index++) {
+			//alert("new unchecked items : "+uncheckedItemArrayUpdated[index]);
+				console.log("new unchecked update items : "+uncheckedItemArrayUpdated[index]);
+		}
+		catIndex=0;
+		updateCategoriesForNewContents1();		
+
+
+		
+		}
+function updateCategoriesForNewContents1() {
+	//alert("Into the updateCategories for new contents");
+	console.log("Into the updateCategories for new contents");
+	for(var index=0; index < checkedItemsArray.length;index++) {
+			//alert("new checked items : "+checkedItemsArray[index]);
+			//console.log("new checked items : "+checkedItemsArray[index]);
+		}
+	for(var index=0;index < uncheckedItemArrayUpdated.length;index++) {
+			//alert("new unchecked items : "+uncheckedItemArrayUpdated[index]);
+			//	console.log("new unchecked items : "+uncheckedItemArrayUpdated[index]);
+		}
+
+		//alert("checkItemArrayUpdated.length = "+uncheckItemArray.length+" catIndex ="+catIndex);
+	//console.log("checkItemArrayUpdated.length = "+uncheckItemArray.length+" catIndex="+catIndex);
+		
+if(catIndex < checkItemArrayUpdated.length) {
+
+	var contentURL = checkItemArrayUpdated[catIndex];
+	var toUpdateCategories;
+	var toCategoriesArray;
+	var updatedCategoryList = new Array();
+	var isCategoryExisting =false;
+	
+	//alert("contentURL got is ="+contentURL);
+	console.log("contentURL got is ="+contentURL);
+	osapi.jive.corev3.contents.get({
+	fields: '@all',	
+	uri: contentURL
+	}).execute(function(contentCatResponseObj){
+				//alert(JSON.stringify(contentCatResponseObj));
+				//console.log(JSON.stringify(contentCatResponseObj));
+				
+					//console.log(contentCatResponseObj.categories);
+					//alert("selected_cat = "+selected_cat);
+				toUpdateCategories = contentCatResponseObj.categories;
+				var str='Applying category '+selected_cat+' to '+contentCatResponseObj.type+'';
+				for(index =0;index < dotIndex;index++) 
+					str = str +'.';
+					dotIndex++;
+				if(dotIndex == 4) dotIndex = 0;
+				document.getElementById("frame1").contentDocument.body.innerHTML = "Updating Categories in Progress.<br>Please leave this window open until the moving process has been completed.<br><br><span id='mySpan' style='font-weight:bold;'>"+str.fontcolor("#3778C7")+"</span>";
+
+				
+				var tempIndex =0;
+				for(var index=0;index < toUpdateCategories.length;index++,tempIndex++) {
+						//alert("---cc-"+toUpdateCategories[index]);
+						//console.log("---cc-"+toUpdateCategories[index]);
+						updatedCategoryList[tempIndex]=toUpdateCategories[index];
+						if(toUpdateCategories[index] == selected_cat) {
+						isCategoryExisting = true;
+						}
+						
+						
+				}
+			//	alert("isCategoryExisting = "+isCategoryExisting);
+					if(!isCategoryExisting){
+						updatedCategoryList[tempIndex]=selected_cat;
+						isCategoryExisting = false;
+					}
+					
+				for(var index=0;index < updatedCategoryList.length;index++,tempIndex++) {
+					//console.log("VVVV-- "+updatedCategoryList[index]);
+				}
+				
+				//console.log("toUpdateCategories = "+toUpdateCategories);
+				alert("Title = "+contentCatResponseObj.subject);
+				var title = contentCatResponseObj.subject;
+				title = title.replace('&amp;','&');
+				title = title.replace('&lt;','<');
+				title = title.replace('&gt;','>');
+				contentCatResponseObj.subject = title;
+				contentCatResponseObj.categories = updatedCategoryList;
+				contentCatResponseObj.update().execute(function(catUpdateResponse){
+				
+				//console.log("updated --"+JSON.stringify(catUpdateResponse));
+				if (catUpdateResponse.error){
+				console.log("updated --"+JSON.stringify(catUpdateResponse));
+				console.log("errorReferenceCatArray.length --"+errorReferenceCatArray.length);
+        errorReferenceCatArray[referenceCatArrayIndex] = contentCatResponseObj.resources.html.ref;
+        referenceCatArrayIndex++;
+        
+        }
+
+				
+				});
+				catIndex++;
+				updateCategoriesForNewContents1();
+				
+			});
+
+}
+else {
+catIndex = 0;
+dotIndex=0;
+removeCategoriesForContents();
+}
+
+}
+
+function removeCategoriesForContents() {
+	
+		
+if(catIndex < uncheckedItemArrayUpdated.length) {
+
+	var contentURL = uncheckedItemArrayUpdated[catIndex];
+	var toUpdateCategories;
+	var toCategoriesArray;
+	var updatedCategoryList = new Array();
+	
+	//alert("contentURL got is ="+contentURL);
+	console.log("contentURL got is ="+contentURL);
+	osapi.jive.corev3.contents.get({
+	fields: '@all',	
+	uri: contentURL
+	}).execute(function(contentCatResponseObj){
+				//alert(JSON.stringify(contentCatResponseObj));
+				console.log(JSON.stringify(contentCatResponseObj));
+				
+					//alert(contentCatResponseObj.categories);
+					//alert("selected_cat = "+selected_cat);
+				toUpdateCategories = contentCatResponseObj.categories;
+				var str='Removing category '+selected_cat+' from '+contentCatResponseObj.type+'';
+				for(index =0;index < dotIndex;index++) 
+					str = str +'.';
+					dotIndex++;
+				if(dotIndex == 4) dotIndex = 0;
+				document.getElementById("frame1").contentDocument.body.innerHTML = "Removing Categories in Progress.<br>Please leave this window open until the moving process has been completed.<br><br><span id='mySpan' style='font-weight:bold;'>"+str.fontcolor("#3778C7")+"</span>";
+				//toUpdateCategories = toUpdateCategories+','+selected_cat;
+				//toUpdateCategories = ["cat1","cat2","cat3"];
+				//toCategoriesArray = toUpdateCategories.split(",");
+				var tempIndex =0;
+				for(var index=0;index < toUpdateCategories.length;index++) {
+						if(selected_cat != toUpdateCategories[index]){
+						//	alert("---cc-"+toUpdateCategories[index]);
+							console.log("---cc-"+toUpdateCategories[index]);
+							updatedCategoryList[tempIndex]=toUpdateCategories[index];
+							tempIndex++;
+						}
+				}
+				
+				//toUpdateCategories = selected_cat;
+				//alert("toUpdateCategories = "+toUpdateCategories);
+				console.log("toUpdateCategories = "+toUpdateCategories);
+				//contentCatResponseObj.categories = toUpdateCategories;
+				var title = contentCatResponseObj.subject;
+				title = title.replace('&amp;','&');
+				title = title.replace('&lt;','<');
+				title = title.replace('&gt;','>');
+				contentCatResponseObj.subject = title;
+				contentCatResponseObj.categories = updatedCategoryList;
+				contentCatResponseObj.update().execute(function(catUpdateResponse){
+				//alert(JSON.stringify(catUpdateResponse));
+				//console.log("UPDated -- "+JSON.stringify(catUpdateResponse));
+				if (catUpdateResponse.error){
+				console.log("updated --"+JSON.stringify(catUpdateResponse));
+				console.log("errorReferenceCatArray.length --"+errorReferenceCatArray.length);
+				
+				errorDeReferenceCatArray[deReferenceCatArrayIndex] = contentCatResponseObj.resources.html.ref;
+				deReferenceCatArrayIndex++;
+        
+        }
+				
+				});
+				catIndex++;
+				removeCategoriesForContents();
+				
+			});
+
+}
+else {
+            for(var index = 0;index < errorReferenceCatArray.length;index++) {
+              console.log("Could Not Reference "+errorReferenceCatArray[index]);
+            } 
+
+            for(var index = 0;index < errorDeReferenceCatArray.length;index++) {
+              console.log("Could Not De-Reference "+errorDeReferenceCatArray[index]);
+            }  
+			if(errorReferenceCatArray.length > 0 || errorDeReferenceCatArray.length>0) {
+				alert('Message:\n\nYou have insufficient rights to update all the content selected.\n\nYou need to have group administration or space moderation rights to update content with restricted authorship (e.g. discussions started by other users).\n\nPlease contact your group or space admin to get the necessary rights.');
+				$('#cmdu').hide();
+				$('#src_place').show();
+				$('#cat_place').show();
+				$('#selCat').show();
+				$('#cat_sel').show();
+				$('#catTo').show();
+				$('#catTo').text('Manage content for this category:');
+				$('#cat_select_items_button').show();
+				$('#cat_place').css("margin-left", "250px");
+				$('#cat_sel').css("margin-left", "250px");
+				$('#selected_items').hide();
+				$('#catTo').css("margin-top", "230px");
+			}
+			else {
+
+		console.log("Category "+selected_cat+" succesfully updated");
+		//alert("Category "+selected_cat+" succesfully updated");
+		var tempRedirectionUrl = source_html_url+'/content?filterID=contentstatus[published]~category['+selected_cat+']';
+		
+		console.log("temRedirectionUrl = "+tempRedirectionUrl);
+		/*$("#stylized").fadeOut(5000,function(){
+		window.location = window.location = tempRedirectionUrl;
+			});*/
+			
+		/*document.getElementById("frame1").contentDocument.body.innerHTML = "Updating is in Progress.<br>Please leave this window open until the updating process has been completed.<br><br><span id='mySpan' style='font-weight:bold;'>"+"'Moving completed. Please click   <a href='+tempRedirectionUrl+'>here </a>  for the new location of your content.'.fontcolor("#3778C7")+"</span>";*/
+	/*	var str='Updating categories has completed. Please click   <a href='+tempRedirectionUrl+'>here </a>  to review the result.';
+		document.getElementById("frame1").contentDocument.body.innerHTML = "Updating Categories in Progress.<br>Please leave this window open until the moving process has been completed.<br><br><span id='mySpan' style='font-weight:bold;'>"+str.fontcolor("#3778C7")+"</span>";*/
+		$('#cmdu').hide();
+		$('#src_place').show();
+		$('#cat_place').show();
+		//$('#selCat').css("margin-top", "-270px");
+		//$('#cat_place').css("margin-top", "-290px");
+		//$('#cat_sel').css("margin-top", "-240px");
+		//$('#catTo').css("margin-top", "-210px");
+		$('#selCat').show();
+		$('#cat_sel').show();
+		$('#catTo').show();
+		$('#catTo').text('Manage content for this category:');
+		$('#cat_select_items_button').show();
+		//$('#cat_place').css("margin-left", "250px");
+		//$('#catFrom').css("margin-top", "-340px");
+		//$('#cat_from_space').css("margin-top", "-300px");
+		//$('#cat_from_group').css("margin-top", "-300px");
+		//$('#cat_from_project').css("margin-top", "-300px");
+		//$('#cat_select_items_button').css("margin-top", "-190px");
+		if($("#cat_from_space").text() !='Change Category in Space')
+			$("#cat_from_space").show();
+			else 
+			$("#cat_from_space").hide();
+			if($("#cat_from_group").text() !='Change Category in Group')
+			$("#cat_from_group").show();
+			else 
+			$("#cat_from_group").hide();
+			if($("#cat_from_project").text() !='Change Category in Project')
+			$("#cat_from_project").show();
+			else
+			$("#cat_from_project").hide();
+		//$('#cat_sel').css("margin-left", "250px");
+		//$('#selected_items').css("margin-top", "145px");
+		//$('#catTo').css("margin-top", "230px");
+		var str='Updating categories has completed. Please click   <a href='+tempRedirectionUrl+'>here </a>  to review the result.';
+		document.getElementById("frame1").contentDocument.body.innerHTML = "Note:<br><br><span id='mySpan' style='font-weight:bold;'>"+str.fontcolor("#3778C7")+"</span>";
+		
+		}
+		
+		
+}
+
+
+
 }
 //*********************************************************End*************
