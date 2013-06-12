@@ -5021,4 +5021,443 @@ else {
 
 
 }
+//-- for auto completion of tags
+ var availableTags = [
+      "ActionScript",
+      "AppleScript",
+      "Asp",
+      "BASIC",
+      "C",
+      "C++",
+      "Clojure",
+      "COBOL",
+      "ColdFusion",
+      "Erlang",
+      "Fortran",
+      "Groovy",
+      "Haskell",
+      "Java",
+      "JavaScript",
+      "Lisp",
+      "Perl",
+      "PHP",
+      "Python",
+      "Ruby",
+      "Scala",
+      "Scheme"
+    ];
+	
+ $(function() {
+      $( "#tag_sel" ).autocomplete({
+      source: availableTags
+    });
+  });
+  
+function populateContentforTags(space_url, blog_url) {
+
+    alert("Please wait , as this operation may take some time . Press ok");
+    osapi.jive.corev3.contents.get({
+        type: 'file',
+        fields: '@all',
+        count: 50,
+        place: space_url
+    }).execute(function (response) {
+        //console.log("Files: "+JSON.stringify(response));
+
+        var files = response.list;
+        var postFiles;
+        var files_length = response.list.length;
+        var tagExist = false;
+        $.each(files, function (index, group) {
+
+
+            var tags = group.tags;
+            for (var ind = 0; ind < tags.length; ind++) {
+                tagExist = false;
+                for (var indexTag = 0; indexTag < tagPopulatList.length; indexTag++) {
+
+                    if (tagPopulatList[indexTag] == tags[ind]) {
+                        tagExist = true;
+                    }
+                }
+                if (!tagExist) {
+                    tagPopulatList[completeTagIndex] = tags[ind];
+                    completeTagIndex++;
+                }
+                availableTags = tagPopulatList;
+                /*$( "#tag_sel" ).autocomplete({
+      source: availableTags
+    });*/
+
+            }
+
+        });
+        populateBlogforTags(blog_url,space_url);
+    });
+
+}
+function populateBlogforTags(blog_url,space_url) {
+    osapi.jive.corev3.contents.get({
+        type: 'post',
+        fields: '@all',
+        count: 50,
+        place: blog_url
+    }).execute(function (response) {
+        //console.log("Files: "+JSON.stringify(response));
+
+        var blogs = response.list;
+        var files_length = response.list.length;
+        var tagExist = false;
+        $.each(blogs, function (index, group) {
+
+
+            var tags = group.tags;
+            for (var ind = 0; ind < tags.length; ind++) {
+                tagExist = false;
+                for (var indexTag = 0; indexTag < tagPopulatList.length; indexTag++) {
+
+                    if (tagPopulatList[indexTag] == tags[ind]) {
+                        tagExist = true;
+                    }
+                }
+                if (!tagExist) {
+                    tagPopulatList[completeTagIndex] = tags[ind];
+                    completeTagIndex++;
+                }
+                availableTags = tagPopulatList;
+				/*$( "#tag_sel" ).autocomplete({
+				  source: availableTags
+				});*/
+
+            }
+
+        });
+        populateDocContentForTags(space_url);
+    });
+
+}
+function populateDocContentForTags(space_url) {
+    osapi.jive.corev3.contents.get({
+        type: 'post',
+        fields: '@all',
+        count: 50,
+        place: space_url
+    }).execute(function (response) {
+        //console.log("Files: "+JSON.stringify(response));
+
+        var docs = response.list;
+        var files_length = response.list.length;
+        var tagExist = false;
+        $.each(docs, function (index, group) {
+
+
+            var tags = group.tags;
+            for (var ind = 0; ind < tags.length; ind++) {
+                tagExist = false;
+                for (var indexTag = 0; indexTag < tagPopulatList.length; indexTag++) {
+
+                    if (tagPopulatList[indexTag] == tags[ind]) {
+                        tagExist = true;
+                    }
+                }
+                if (!tagExist) {
+                    tagPopulatList[completeTagIndex] = tags[ind];
+                    completeTagIndex++;
+                }
+                availableTags = tagPopulatList;
+				/*$( "#tag_sel" ).autocomplete({
+				  source: availableTags
+				});*/
+
+            }
+
+        });
+        populateDiscussionsForTags(space_url);
+    });
+
+}
+function populateDiscussionsForTags(space_url) {
+    osapi.jive.corev3.contents.get({
+        type: 'discussion',
+        fields: '@all',
+        count: 50,
+        place: space_url
+    }).execute(function (response) {
+        //console.log("Files: "+JSON.stringify(response));
+
+        var discs = response.list;
+        var files_length = response.list.length;
+        var tagExist = false;
+        $.each(discs, function (index, group) {
+
+
+            var tags = group.tags;
+            for (var ind = 0; ind < tags.length; ind++) {
+                tagExist = false;
+                for (var indexTag = 0; indexTag < tagPopulatList.length; indexTag++) {
+
+                    if (tagPopulatList[indexTag] == tags[ind]) {
+                        tagExist = true;
+                    }
+                }
+                if (!tagExist) {
+                    tagPopulatList[completeTagIndex] = tags[ind];
+                    completeTagIndex++;
+                }
+                availableTags = tagPopulatList;
+				/*$( "#tag_sel" ).autocomplete({
+				  source: availableTags
+				});*/
+
+            }
+
+        });
+        populateIdeasForTags(space_url);
+    });
+
+}
+function populateIdeasForTags(space_url) {
+    osapi.jive.corev3.contents.get({
+        type: 'idea',
+        fields: '@all',
+        count: 50,
+        place: space_url
+    }).execute(function (response) {
+        //console.log("Files: "+JSON.stringify(response));
+
+        var ideas = response.list;
+        var files_length = response.list.length;
+        var tagExist = false;
+        $.each(ideas, function (index, group) {
+
+
+            var tags = group.tags;
+            for (var ind = 0; ind < tags.length; ind++) {
+                tagExist = false;
+                for (var indexTag = 0; indexTag < tagPopulatList.length; indexTag++) {
+
+                    if (tagPopulatList[indexTag] == tags[ind]) {
+                        tagExist = true;
+                    }
+                }
+                if (!tagExist) {
+                    tagPopulatList[completeTagIndex] = tags[ind];
+                    completeTagIndex++;
+                }
+                availableTags = tagPopulatList;
+				/*$( "#tag_sel" ).autocomplete({
+				  source: availableTags
+				});*/
+
+            }
+
+        });
+        populatePollsForTags(space_url);
+    });
+
+}
+function populatePollsForTags(space_url) {
+    osapi.jive.corev3.contents.get({
+        type: 'poll',
+        fields: '@all',
+        count: 50,
+        place: space_url
+    }).execute(function (response) {
+        //console.log("Files: "+JSON.stringify(response));
+
+        var ideas = response.list;
+        var files_length = response.list.length;
+        var tagExist = false;
+        $.each(ideas, function (index, group) {
+
+
+            var tags = group.tags;
+            for (var ind = 0; ind < tags.length; ind++) {
+                tagExist = false;
+                for (var indexTag = 0; indexTag < tagPopulatList.length; indexTag++) {
+
+                    if (tagPopulatList[indexTag] == tags[ind]) {
+                        tagExist = true;
+                    }
+                }
+                if (!tagExist) {
+                    tagPopulatList[completeTagIndex] = tags[ind];
+                    completeTagIndex++;
+                }
+                availableTags = tagPopulatList;
+				/*$( "#tag_sel" ).autocomplete({
+				  source: availableTags
+				});*/
+
+            }
+
+        });
+       // populateIdeasForTags(space_url);
+	   for(var indexTag1 = 0;indexTag1 < availableTags.length;indexTag1++){
+		console.log("availableTags .. "+availableTags[indexTag1]);
+	   }
+	   $( "#tag_sel" ).autocomplete({
+				  source: availableTags
+				});
+	
+		
+		if(fromRequestAction=='fromSpaceRequestAction') {
+			//$('#all_selected_items').css("margin-top", "80px");
+			//$('#selected_items').css("margin-top", "80px");
+			//$("#tagFrom").css("margin-top", "-30px");
+			//$("#tag_from_space").css("margin-top", "10px");
+			//$("#tag_place").css("margin-top", "40px");
+			//$("#selTag").css("margin-top", parseInt($("#tag_place").css("margin-top"))+35+'px');
+			//$("#selTag").css("margin-top", "60px");
+			//$("#tag_sel").css("margin-top", "90px");
+			//$("#add_tag_button").css("margin-top", "90px");
+			//$("#tag_place").css("margin-left", '-65px');
+			//$("#tagFrom").css("margin-left", '235px');
+			//$("#selTag").css("margin-left", '205px');
+			//$("#tag_sel").css("margin-left", '-75px');
+			$("#selTag").text("Enter Tag");
+
+
+			$("#tagTo").text("Assign tag to this content:").append('<br/>');
+			document.getElementById("tagTo").style.display="inline";
+			$("#tagTo").hide();
+			$("#dwnTo").hide();
+			$("#upTo").hide();
+			$("#tag_sel option").each(function() {
+				$(this).remove();
+			   });
+			document.getElementById("dwn_select_items_button").style.display="inline";
+			document.getElementById("tag_select_items_button").style.display="inline";
+			document.getElementById("tag_sel").style.display="inline";
+			document.getElementById("up_select_items_button").style.display="inline";
+			$("#dwn_select_items_button").hide();
+			$("#tag_select_items_button").hide();
+
+			$("#tag_sel").show();
+			$("#add_tag_button").show();
+			$("#selTag").show();
+			$("#up_select_items_button").hide();
+			$("#change_selection_div").hide();
+			$("#dwnShow").hide();
+			$("#catShow").hide();
+			$("#tagShow").show();
+			$("#upShow").hide();
+			$("#up_place").hide();
+			$("#add_tag").hide();
+			document.getElementById("dwn_place").style.display="inline";
+			document.getElementById("tag_place").style.display="inline";
+			$("#dwn_place").hide();
+			$("#tag_place").show();
+			document.getElementById("tag_from_space").innerHTML='<span id="myId" style="text-decoration:underline;">Space</span>'+': '+global_from_place_name;
+
+			$("#tag_from_space").show();
+			$("#tag_from_group").hide();
+			$("#tag_from_project").hide();
+		}
+		else if(fromRequestAction=='fromGroupRequestAction') {
+			//$('#all_selected_items').css("margin-top", "80px");
+			//$('#selected_items').css("margin-top", "80px");
+			//$("#tagFrom").css("margin-top", "-30px");
+			//$("#tag_from_group").css("margin-top", "10px");
+			//$("#tag_place").css("margin-top", "40px");
+			//$("#selTag").css("margin-top", parseInt($("#tag_place").css("margin-top"))+35+'px');
+			//$("#selTag").css("margin-top", "60px");
+			//$("#tag_sel").css("margin-top", "90px");
+			//$("#add_tag_button").css("margin-top", "90px");
+			//$("#tag_place").css("margin-left", '-65px');
+			//$("#tagFrom").css("margin-left", '235px');
+			//$("#selTag").css("margin-left", '205px');
+			//$("#tag_sel").css("margin-left", '-75px');
+			$("#selTag").text("Enter Tag");
+			$("#tagTo").text("Assign tag to this content:").append('<br/>');
+			document.getElementById("catTo").style.display="inline";
+			$("#tagTo").hide();
+			$("#dwnTo").hide();
+			$("#upTo").hide();
+			$("#tag_sel option").each(function() {
+				$(this).remove();
+			   });
+			document.getElementById("dwn_select_items_button").style.display="inline";
+			document.getElementById("tag_select_items_button").style.display="inline";
+			document.getElementById("tag_sel").style.display="inline";
+			document.getElementById("up_select_items_button").style.display="inline";
+			$("#dwn_select_items_button").hide();
+			$("#tag_select_items_button").hide();
+			$("#tag_sel").show();
+			$("#add_tag_button").show();
+			$("#selTag").show();
+			$("#up_select_items_button").hide();
+			$("#change_selection_div").hide();
+			$("#dwnShow").hide();
+			$("#catShow").hide();
+			$("#tagShow").show();
+			$("#upShow").hide();
+			$("#up_place").hide();
+			document.getElementById("dwn_place").style.display="inline";
+			document.getElementById("tag_place").style.display="inline";
+			$("#dwn_place").hide();
+			$("#tag_place").show();
+			document.getElementById("tag_from_group").innerHTML='<span id="myId" style="text-decoration:underline;">Group</span>'+': '+global_from_place_name;
+			//$("#tag_place").css("margin-top", "40px");
+			$("#tag_from_space").hide();
+			$("#tag_from_group").show();
+			$("#tag_from_project").hide();
+			$("#add_tag").hide();
+		}
+		else {
+				//$('#all_selected_items').css("margin-top", "80px");
+			//$('#selected_items').css("margin-top", "80px");
+			//$("#tagFrom").css("margin-top", "-30px");
+			//$("#tag_from_project").css("margin-top", "10px");
+			//$("#tag_place").css("margin-top", "40px");
+			//$("#selTag").css("margin-top", parseInt($("#tag_place").css("margin-top"))+35+'px');
+			//$("#selTag").css("margin-top", "60px");
+			//$("#tag_sel").css("margin-top", "90px");
+			//$("#add_tag_button").css("margin-top", "90px");
+			//$("#tag_place").css("margin-left", '-65px');
+			//$("#tagFrom").css("margin-left", '235px');
+			//$("#selTag").css("margin-left", '205px');
+			//$("#tag_sel").css("margin-left", '-75px');
+			$("#selTag").text("Enter Tag");
+			$("#tagTo").text("Assign tag to this content:").append('<br/>');
+			document.getElementById("tagTo").style.display="inline";
+			$("#catTo").hide();
+			$("#tagTo").hide();
+			$("#dwnTo").hide();
+			$("#upTo").hide();
+			$("#tag_sel option").each(function() {
+				$(this).remove();
+			   });
+			$("#add_tag").hide();
+			document.getElementById("dwn_select_items_button").style.display="inline";
+			document.getElementById("tag_select_items_button").style.display="inline";
+			document.getElementById("tag_sel").style.display="inline";
+			document.getElementById("up_select_items_button").style.display="inline";
+			$("#dwn_select_items_button").hide();
+			$("#tag_select_items_button").hide();
+			$("#cat_sel").hide();
+			$("#tag_sel").show();
+			$("#add_tag_button").show();
+			$("#selCat").hide();
+			$("#selTag").show();
+			$("#up_select_items_button").hide();
+			$("#change_selection_div").hide();
+			$("#dwnShow").hide();
+			$("#catShow").hide();
+			$("#tagShow").show();
+			$("#upShow").hide();
+			$("#up_place").hide();
+			document.getElementById("dwn_place").style.display="inline";
+			document.getElementById("tag_place").style.display="inline";
+			$("#dwn_place").hide();
+			$("#tag_place").show();
+			document.getElementById("tag_from_project").innerHTML='<span id="myId" style="text-decoration:underline;">Project</span>'+': '+global_from_place_name;
+			//$("#tag_place").css("margin-top", "40px");
+			$("#tag_from_space").hide();
+			$("#tag_from_group").hide();
+			$("#tag_from_project").show();
+		}
+    });
+
+}
 //*********************************************************End*************
