@@ -674,7 +674,7 @@ $("#tag_place").css("margin-top", 0);
 //$("#cat_from_space").hide();
 //$("#cat_from_group").hide();
 //$("#cat_from_project").hide();
-$("#finalTagShow").hide();
+$("#finalTagShow").show();
 //*********************End*********************
 
 //Hide all the items with regard to Manage Tags*************
