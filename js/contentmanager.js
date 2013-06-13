@@ -660,19 +660,21 @@ $('#to_place').hide();
 $('#button_div').hide();
 }
 else if(sel_action_val=="tags"){
+alert("hello tags");
 src_space_name='';
 dest_space_name='';
 $("#tag_place").css("margin-top", 0);
 //Show the items related to tags and hide the others
-$("#catShow").hide();
-$("#catFrom").hide();
-$("#cat_place").hide();
-$("#selCat").hide();
-$("#catTo").hide();
-$("#cat_select_items_button").hide();
-$("#cat_from_space").hide();
-$("#cat_from_group").hide();
-$("#cat_from_project").hide();
+//$("#catShow").hide();
+//$("#catFrom").hide();
+//$("#cat_place").hide();
+//$("#selCat").hide();
+//$("#catTo").hide();
+//$("#cat_select_items_button").hide();
+//$("#cat_from_space").hide();
+//$("#cat_from_group").hide();
+//$("#cat_from_project").hide();
+$("#finalTagShow").hide();
 //*********************End*********************
 
 //Hide all the items with regard to Manage Tags*************
