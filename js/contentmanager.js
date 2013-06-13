@@ -665,16 +665,15 @@ src_space_name='';
 dest_space_name='';
 $("#tag_place").css("margin-top", 0);
 //Show the items related to tags and hide the others
-//$("#catShow").hide();
-//$("#catFrom").hide();
-//$("#cat_place").hide();
-//$("#selCat").hide();
-//$("#catTo").hide();
-//$("#cat_select_items_button").hide();
-//$("#cat_from_space").hide();
-//$("#cat_from_group").hide();
-//$("#cat_from_project").hide();
-$("#finalTagShow").show();
+$("#catShow").hide();
+$("#catFrom").hide();
+$("#cat_place").hide();
+$("#selCat").hide();
+$("#catTo").hide();
+$("#cat_select_items_button").hide();
+$("#cat_from_space").hide();
+$("#cat_from_group").hide();
+$("#cat_from_project").hide();
 //*********************End*********************
 
 //Hide all the items with regard to Manage Tags*************
@@ -1151,6 +1150,7 @@ categoryTest();
 
 else if(sel_action_val=="tags")
 {
+alert("tags");
 // actions when the user choses to download files.
 //$('#tag_place').css("margin-top", "120px");
 tagPopulatList =  new Array();
